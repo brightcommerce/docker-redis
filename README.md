@@ -42,7 +42,7 @@ docker build -t="$USER/redis" .
 Run the Redis image:
 
 ``` bash
-docker run -name redis -d brightcommerce/redis:latest
+docker run --name redis -d brightcommerce/redis:latest
 ```
 
 To test if the Redis server is configured properly, try connecting to the server.
