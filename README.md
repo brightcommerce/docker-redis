@@ -3,10 +3,11 @@
 Dockerfile to build a Redis Server container image which can be linked to other containers.
 
 ## Table of Contents
-- [Verison](#version)
+- [Version](#version)
 - [Installation](#installation)
 - [How To Use](#how-to-use)
 - [Configuration](#configuration)
+    - [Ports](#ports)
     - [Data Store](#data-store)
 - [Upgrading](#upgrading)
 - [Credit](#credit)
@@ -81,6 +82,10 @@ root@9a34e83ea636:~# logout
 
 ## Configuration
 
+### Ports
+
+This installation exposes port `6379`.
+
 ### Data Store
 
 For data persistence a volume should be mounted at `/var/lib/redis`.
@@ -92,25 +97,25 @@ mkdir -p /opt/redis
 docker run -name redis -d -v /opt/redis:/var/lib/redis brightcommerce/redis:latest
 ```
 
-This will make sure that the data stored in the database is not lost when the image is stopped and started again.
+This will make sure that the data stored in the database is not lost when the image is stopped and restarted.
 
 ## Upgrading
 
 To upgrade to newer releases, simply follow this 3 step upgrade procedure.
 
-- **Step 1**: Stop the currently running image
+- **Step 1**: Stop the currently running image:
 
 ``` bash
 docker stop redis
 ```
 
-- **Step 2**: Update the docker image.
+- **Step 2**: Update the docker image:
 
 ``` bash
 docker pull brightcommerce/redis:latest
 ```
 
-- **Step 3**: Start the image
+- **Step 3**: Start the image:
 
 ``` bash
 docker run -name redis -d [OPTIONS] brightcommerce/redis:latest
